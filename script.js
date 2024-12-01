@@ -18,7 +18,29 @@ document.addEventListener('DOMContentLoaded', function() {
     elementsToAnimate.forEach(element => {
         observer.observe(element);
     });
+
+    // Subscription form validation
+    const subscriptionBtn = document.querySelector('.subscription-btn');
+    subscriptionBtn.addEventListener('click', function() {
+        const emailInput = document.querySelector('.subscription-input input[type="text"]');
+        const email = emailInput.value.trim();
+
+        if (!email) {
+            alert('Por favor, insira um endereço de email.');
+            return;
+        }
+
+        // Simple email validation
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email)) {
+            alert('Por favor, insira um endereço de email válido.');
+            return;
+        }
+
+        alert(`Email enviado: ${email}`);
+    });
 });
+
 const demoBttn=document.querySelector('.btn.top a');
 const demoBttn2=document.querySelector('.btn.intro-2 a');
 const introBttn=document.querySelector('.btn.intro-1 a');
